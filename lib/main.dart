@@ -1,30 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/pages/homepage.dart';
+import 'package:flutter_practice/pages/login_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: HomePage(),
+    home: LoginPage(),
   ));
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Practice App'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Container(
-          child: Text(
-            'Welcome to practice app',
-            style: TextStyle(
-              color: Colors.red,
-              fontSize: 30.0,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
