@@ -8,25 +8,9 @@ class HomePage extends StatelessWidget {
         title: Text('Practice App'),
         centerTitle: true,
       ),
-      body: Row(
-        children: [
-          Container(
-            color: Colors.red,
-            width: 20,
-            height: 20,
-          ),
-          Container(
-            color: Colors.blue,
-            width: 30,
-            height: 30,
-          ),
-          Container(
-            color: Colors.green,
-            width: 20,
-            height: 20,
-          ),
-        ],
-      ),
+      body: Text('welcome to my new flutter application'),
+      drawer: Drawer(),
+
     );
   }
 }
