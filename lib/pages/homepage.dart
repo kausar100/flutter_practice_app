@@ -5,11 +5,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Practice App'),
+        title: Text('Catalog App'),
         centerTitle: true,
       ),
-      body: Text('welcome to my new flutter application'),
-      drawer: Drawer(),
+      body: Center(child: Text('Welcome to my new flutter application')),
 
     );
   }
