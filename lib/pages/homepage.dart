@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(child: Text('Welcome to my new flutter application')),
+      drawer: Drawer(),
 
     );
   }
