@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/pages/detail_homepage.dart';
 import 'package:flutter_practice/pages/homepage.dart';
 import 'package:flutter_practice/pages/login_page.dart';
 import 'package:flutter_practice/utils/MyRoute.dart';
