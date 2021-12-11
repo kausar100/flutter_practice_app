@@ -21,8 +21,8 @@ class DetailHomePage extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            "\$${catalog.price}".text.bold.xl3.blue500.make(),
-            AddToCart(catalog: catalog).wh(120, 50),
+            "\$${catalog.price}".text.bold.xl2.red500.make(),
+            AddToCart(catalog: catalog).wh(70, 35),
           ],
         ).p16(),
       ),
@@ -49,13 +49,13 @@ class DetailHomePage extends StatelessWidget {
                         .bold
                         .make(),
                     catalog.description.text.xl.make(),
-                    10.heightBox,
-                    "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita. Diam aliquyam amet tempor diam no aliquyam invidunt. Elitr lorem eirmod dolore clita. Rebum."
+                    5.heightBox,
+                    "Affordable Small Appliances products available at Catalog app. Let us help you buy your next small appliance product from Best Electronics in Bangladesh. Check our huge collection of Small Appliances of various global brands."
                         .text
                         .make()
-                        .p16()
+                        .p8()
                   ],
-                ).py64(),
+                ).py32(),
               ),
             ))
           ],

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/core/store.dart';
 import 'package:flutter_practice/pages/cart_page.dart';
 import 'package:flutter_practice/pages/homepage.dart';
 import 'package:flutter_practice/pages/login_page.dart';
 import 'package:flutter_practice/utils/MyRoute.dart';
 import 'package:flutter_practice/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(VxState(store: MyStore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,12 +17,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      //debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       initialRoute: MyRoute.homePage,
       routes: {
+        "/": (context) => LoginPage(),
         MyRoute.homePage: (context) => HomePage(),
         MyRoute.loginPage: (context) => LoginPage(),
         MyRoute.cartPage: (context) => CartPage(),

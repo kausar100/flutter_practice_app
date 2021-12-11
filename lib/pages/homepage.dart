@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_practice/core/store.dart';
+import 'package:flutter_practice/models/cart.dart';
 import 'dart:convert';
 import 'package:flutter_practice/models/catalog.dart';
 import 'package:flutter_practice/utils/MyRoute.dart';
@@ -8,6 +10,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
+// import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // final url = "https://api.jsonbin.io/b/61b3fd1462ed886f915e273a";
+
   @override
   void initState() {
     super.initState();
@@ -25,6 +30,8 @@ class _HomePageState extends State<HomePage> {
     await Future.delayed(const Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
+    // final response = await http.get(Uri.parse(url));
+    // final catalogJson = response.body;
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
     CatalogModel.items = List.from(productsData)
@@ -35,15 +42,26 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
         backgroundColor: context.canvasColor,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, MyRoute.cartPage),
-          backgroundColor: context.theme.buttonColor,
-          child: Icon(
-            CupertinoIcons.cart,
-            color: context.theme.buttonColor,
-          ),
+        floatingActionButton: VxBuilder(
+          mutations: const {AddMutation, RemoveMutation},
+          builder: (ctx, _, status) => FloatingActionButton(
+            onPressed: () => Navigator.pushNamed(context, MyRoute.cartPage),
+            backgroundColor: context.theme.buttonColor,
+            child: Icon(
+              CupertinoIcons.cart,
+              color: Colors.white,
+            ),
+          ).badge(
+              color: Vx.gray200,
+              size: 22,
+              count: _cart.items.length,
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              )),
         ),
         body: SafeArea(
           child: Container(
