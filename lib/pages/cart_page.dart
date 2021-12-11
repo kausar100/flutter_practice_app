@@ -13,6 +13,7 @@ class CartPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: "Cart".text.make(),
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -73,9 +74,10 @@ class _CartTotal extends StatelessWidget {
               ));
             },
             style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(context.theme.buttonColor)),
-            child: "Buy".text.white.make(),
+              backgroundColor:
+                  MaterialStateProperty.all(context.theme.buttonColor),
+            ),
+            child: "Buy".text.bold.white.make(),
           ).w32(context)
         ],
       ),

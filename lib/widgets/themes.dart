@@ -10,6 +10,8 @@ class MyTheme {
       accentColor: darkBluishColor,
       appBarTheme: AppBarTheme(
         color: Colors.white,
+        titleTextStyle: TextStyle(
+            color: darkBluishColor, fontSize: 20, fontWeight: FontWeight.bold),
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
         textTheme: Theme.of(context).textTheme,
@@ -27,7 +29,7 @@ class MyTheme {
         iconTheme: IconThemeData(color: Colors.white),
         textTheme: Theme.of(context).textTheme.copyWith(
               headline6:
-                  context.textTheme.headline6!.copyWith(color: Colors.white),
+                  context.textTheme.headline6?.copyWith(color: Colors.white),
             ),
       ));
 

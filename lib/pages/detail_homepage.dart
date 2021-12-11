@@ -21,7 +21,7 @@ class DetailHomePage extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            "\$${catalog.price}".text.bold.xl2.red500.make(),
+            "\$${catalog.price}".text.bold.xl2.red800.make(),
             AddToCart(catalog: catalog).wh(70, 35),
           ],
         ).p16(),
