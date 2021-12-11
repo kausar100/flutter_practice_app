@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/core/store.dart';
 import 'package:flutter_practice/pages/cart_page.dart';
+import 'package:flutter_practice/pages/detail_homepage.dart';
 import 'package:flutter_practice/pages/homepage.dart';
 import 'package:flutter_practice/pages/login_page.dart';
 import 'package:flutter_practice/utils/MyRoute.dart';
@@ -13,24 +14,35 @@ void main() {
   runApp(VxState(store: MyStore(), child: MyApp()));
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
-      initialRoute: MyRoute.loginPage,
-      routes: {
-        "/": (context) => LoginPage(),
-        MyRoute.homePage: (context) => HomePage(),
-        MyRoute.loginPage: (context) => LoginPage(),
-        MyRoute.cartPage: (context) => CartPage(),
-      },
+
+      routeInformationParser: VxInformationParser(),
+      routerDelegate: VxNavigator(
+        routes: {
+          "/": (_, __) => MaterialPage(child: LoginPage()),
+          MyRoute.homePage: (_, __) => MaterialPage(child: HomePage()),
+          MyRoute.detailHomePage: (uri, __) {
+            String? itemId = uri.queryParameters["id"];
+            final catalog =
+                (VxState.store as MyStore).catalog.getById(int.parse(itemId!));
+            return MaterialPage(
+                child: DetailHomePage(
+              catalog: catalog,
+            ));
+          },
+          MyRoute.loginPage: (_, __) => MaterialPage(child: LoginPage()),
+          MyRoute.cartPage: (_, __) => const MaterialPage(child: CartPage()),
+        },
+      ),
     );
   }
 }

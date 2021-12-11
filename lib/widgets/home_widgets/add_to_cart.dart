@@ -7,7 +7,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 class AddToCart extends StatelessWidget {
   final Item catalog;
-  AddToCart({Key? key, required this.catalog}) : super(key: key);
+  const AddToCart({Key? key, required this.catalog}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class AddToCart extends StatelessWidget {
           shape: MaterialStateProperty.all(
             StadiumBorder(),
           )),
-      child: isInCart ? Icon(Icons.done) : Icon(CupertinoIcons.cart_badge_plus),
+      child: isInCart ? const Icon(Icons.done) : const Icon(CupertinoIcons.cart_badge_plus),
     );
   }
 }

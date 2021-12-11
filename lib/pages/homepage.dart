@@ -47,10 +47,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: context.canvasColor,
         floatingActionButton: VxBuilder(
           mutations: const {AddMutation, RemoveMutation},
-          builder: (ctx, _, status) => FloatingActionButton(
-            onPressed: () => Navigator.pushNamed(context, MyRoute.cartPage),
+          builder: (ctx, _, __) => FloatingActionButton(
+            onPressed: () => context.vxNav.push(Uri.parse(MyRoute.cartPage)),
             backgroundColor: context.theme.buttonColor,
-            child: Icon(
+            child: const Icon(
               CupertinoIcons.cart,
               color: Colors.white,
             ),
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               color: Vx.gray200,
               size: 22,
               count: _cart.items.length,
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               )),
