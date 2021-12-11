@@ -14,6 +14,7 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: "Cart".text.make(),
         centerTitle: true,
+        
       ),
       body: Column(
         children: [
@@ -37,7 +38,9 @@ class _CartList extends StatelessWidget {
             itemCount: _cart.items.length,
             itemBuilder: (context, index) => ListTile(
               leading: const Icon(Icons.done),
-              trailing: IconButton(
+              trailing: RaisedButton.icon(
+                color: Colors.transparent,
+                label: _cart.items[index].price.toString().text.red800.make(),
                 icon: const Icon(Icons.remove_circle_outline),
                 onPressed: () => RemoveMutation(_cart.items[index]),
               ),

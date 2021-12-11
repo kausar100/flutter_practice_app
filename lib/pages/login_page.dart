@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/utils/MyRoute.dart';
 import 'package:velocity_x/src/extensions/context_ext.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -36,8 +37,10 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Image.asset(
                   "assets/images/login.png",
-                  fit: BoxFit.cover,
-                ),
+                  // fit: BoxFit.cover,
+                  height: 150,
+                  width: 150,
+                ).py32(),
                 SizedBox(
                   height: 20.0,
                 ),
@@ -90,17 +93,17 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                       SizedBox(
-                        height: 40.0,
+                        height: 20.0,
                       ),
                       Material(
                         color: context.theme.buttonColor,
                         borderRadius:
-                            BorderRadius.circular(changedButton ? 50 : 8),
+                            BorderRadius.circular(changedButton ? 50 : 10),
                         child: InkWell(
                           onTap: () => backToHome(context),
                           child: AnimatedContainer(
                             duration: Duration(seconds: 1),
-                            width: changedButton ? 50 : 150,
+                            width: changedButton ? 50 : 100,
                             height: 50,
                             alignment: Alignment.center,
                             child: changedButton

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -13,8 +15,8 @@ class MyTheme {
         titleTextStyle: TextStyle(
             color: darkBluishColor, fontSize: 20, fontWeight: FontWeight.bold),
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.black),
-        textTheme: Theme.of(context).textTheme,
+        iconTheme: const IconThemeData(color: Colors.black),
+        toolbarTextStyle: TextStyle(color: darkBluishColor),
       ));
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
