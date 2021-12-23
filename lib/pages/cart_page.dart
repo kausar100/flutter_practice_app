@@ -14,7 +14,6 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: "Cart".text.make(),
         centerTitle: true,
-        
       ),
       body: Column(
         children: [
@@ -40,7 +39,11 @@ class _CartList extends StatelessWidget {
               leading: const Icon(Icons.done),
               trailing: RaisedButton.icon(
                 color: Colors.transparent,
-                label: _cart.items[index].price.toString().text.red800.make(),
+                label: _cart.items[index].price
+                    .toString()
+                    .text
+                    .color(context.accentColor)
+                    .make(),
                 icon: const Icon(Icons.remove_circle_outline),
                 onPressed: () => RemoveMutation(_cart.items[index]),
               ),
@@ -55,7 +58,7 @@ class _CartTotal extends StatelessWidget {
   Widget build(BuildContext context) {
     final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
-      height: 200,
+      height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -64,23 +67,26 @@ class _CartTotal extends StatelessWidget {
             builder: (context, _, __) {
               return "\$${_cart.totalPrice}"
                   .text
-                  .xl5
-                  .color(context.theme.accentColor)
+                  .xl4
+                  .color(context.accentColor)
                   .make();
             },
           ),
-          30.widthBox,
           ElevatedButton(
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: "Buying not supported yet.".text.make(),
+                backgroundColor: context.cardColor,
+                content: "Buying not supported yet."
+                    .text
+                    .color(context.accentColor)
+                    .make(),
               ));
             },
             style: ButtonStyle(
               backgroundColor:
                   MaterialStateProperty.all(context.theme.buttonColor),
             ),
-            child: "Buy".text.bold.white.make(),
+            child: "Buy".text.bold.color(context.cardColor).make(),
           ).w32(context)
         ],
       ),

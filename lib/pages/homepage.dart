@@ -18,7 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final url = "https://api.jsonbin.io/b/61b3fd1462ed886f915e273a";
 
   @override
   void initState() {
@@ -27,9 +26,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
+
     // final response = await http.get(Uri.parse(url));
     // final catalogJson = response.body;
     final decodedData = jsonDecode(catalogJson);
@@ -46,11 +46,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: context.canvasColor,
         floatingActionButton: VxBuilder(
-          mutations: const {AddMutation, RemoveMutation},
-          builder: (ctx, _, __) => FloatingActionButton(
+          mutations: {AddMutation, RemoveMutation},
+          builder: (ctx, _,__) => FloatingActionButton(
             onPressed: () => context.vxNav.push(Uri.parse(MyRoute.cartPage)),
             backgroundColor: context.theme.buttonColor,
-            child: const Icon(
+            child: Icon(
               CupertinoIcons.cart,
               color: Colors.white,
             ),
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               color: Vx.gray200,
               size: 22,
               count: _cart.items.length,
-              textStyle: const TextStyle(
+              textStyle: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               )),
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                   CatalogList().py16().expand()
                 else
-                  const CircularProgressIndicator().centered().expand(),
+                  CircularProgressIndicator().centered().expand(),
               ],
             ),
           ),

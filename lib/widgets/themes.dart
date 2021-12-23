@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
       primarySwatch: Colors.deepPurple,
@@ -12,11 +13,9 @@ class MyTheme {
       accentColor: darkBluishColor,
       appBarTheme: AppBarTheme(
         color: Colors.white,
-        titleTextStyle: TextStyle(
-            color: darkBluishColor, fontSize: 20, fontWeight: FontWeight.bold),
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.black),
-        toolbarTextStyle: TextStyle(color: darkBluishColor),
+        iconTheme: IconThemeData(color: Colors.black),
+        textTheme: Theme.of(context).textTheme,
       ));
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
@@ -31,7 +30,7 @@ class MyTheme {
         iconTheme: IconThemeData(color: Colors.white),
         textTheme: Theme.of(context).textTheme.copyWith(
               headline6:
-                  context.textTheme.headline6?.copyWith(color: Colors.white),
+                  context.textTheme.headline6!.copyWith(color: Colors.white),
             ),
       ));
 

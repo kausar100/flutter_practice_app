@@ -4,22 +4,25 @@ import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   String name = "";
-  bool changedButton = false;
+  bool changeButton = false;
+
   final _formKey = GlobalKey<FormState>();
 
-  backToHome(BuildContext context) async {
+  moveToHome(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       setState(() {
-        changedButton = true;
+        changeButton = true;
       });
-      await Future.delayed(const Duration(seconds: 1));
-      // await Navigator.pushNamed(context, MyRoute.homePage);
-      await context.vxNav.push(Uri.parse(MyRoute.homePage));
+     await Future.delayed(Duration(seconds: 2));
+     context.vxNav.push(Uri.parse(MyRoute.homePage));
+      setState(() {
+        changeButton = false;
+      });
     }
   }
 
@@ -34,21 +37,19 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Image.asset(
                   "assets/images/login.png",
-                  // fit: BoxFit.cover,
-                  height: 150,
-                  width: 150,
-                ).py32(),
-                const SizedBox(
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(
                   height: 20.0,
                 ),
                 Text(
                   "Welcome $name",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20.0,
                 ),
                 Padding(
@@ -57,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: "Enter username",
                           labelText: "Username",
                         ),
@@ -75,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         obscureText: true,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: "Enter password",
                           labelText: "Password",
                         ),
@@ -89,26 +90,26 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         },
                       ),
-                      const SizedBox(
-                        height: 20.0,
+                      SizedBox(
+                        height: 40.0,
                       ),
                       Material(
                         color: context.theme.buttonColor,
                         borderRadius:
-                            BorderRadius.circular(changedButton ? 50 : 10),
+                            BorderRadius.circular(changeButton ? 50 : 8),
                         child: InkWell(
-                          onTap: () => backToHome(context),
+                          onTap: () => moveToHome(context),
                           child: AnimatedContainer(
-                            duration: const Duration(seconds: 1),
-                            width: changedButton ? 50 : 100,
+                            duration: Duration(seconds: 1),
+                            width: changeButton ? 50 : 150,
                             height: 50,
                             alignment: Alignment.center,
-                            child: changedButton
-                                ? const Icon(
+                            child: changeButton
+                                ? Icon(
                                     Icons.done,
                                     color: Colors.white,
                                   )
-                                : const Text(
+                                : Text(
                                     "Login",
                                     style: TextStyle(
                                         color: Colors.white,

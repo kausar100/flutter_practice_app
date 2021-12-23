@@ -21,15 +21,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
 
       routeInformationParser: VxInformationParser(),
       routerDelegate: VxNavigator(
         routes: {
-          "/": (_, __) => MaterialPage(child: LoginPage()),
-          MyRoute.homePage: (_, __) => MaterialPage(child: HomePage()),
+          "/": (_, __) =>  MaterialPage(child: LoginPage()),
+          MyRoute.homePage: (_, __) =>  MaterialPage(child: HomePage()),
           MyRoute.detailHomePage: (uri, __) {
             String? itemId = uri.queryParameters["id"];
             final catalog =
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
               catalog: catalog,
             ));
           },
-          MyRoute.loginPage: (_, __) => MaterialPage(child: LoginPage()),
+          MyRoute.loginPage: (_, __) =>  MaterialPage(child: LoginPage()),
           MyRoute.cartPage: (_, __) => const MaterialPage(child: CartPage()),
         },
       ),
